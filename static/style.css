@@ -11,6 +11,8 @@ a:link, a:visited, a:hover {
 .container {
   width: 90%;
   max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (min-width: 1600px) {
