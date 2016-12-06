@@ -1,0 +1,16 @@
+body {
+  font-family: 'Helvetica Neue', 'Lato', 'Roboto', sans-serif;
+  background-color: #4a7a9c;
+}
+
+blockquote p {
+  display: block;
+}
+
+blockquote p h4 {
+  display: inline;
+}
+
+blockquote p time {
+  float: right;
+}

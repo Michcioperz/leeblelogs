@@ -4,8 +4,8 @@
 {% if n %}<h5>Next day: <a href="{{ url_for("log", day=n) }}">{{ n.split(".log")[0] }}</a></h5>{% endif %}
 <blockquote>
 {% for line in parsed_data %}
-<p style="display:block">
-  <time style="float:right">{{ line.time }}</time>
+<p>
+  <time>{{ line.time }}</time>
   {% if line.type == "message" %}
     <strong>{{ line.object }}{{ ":"|e }}</strong> {{ line.content }}
   {% elif line.type == "action" %}
