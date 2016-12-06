@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 import os
 import logging
-from logging.handlers import SysLogHandler
+from logging.handlers import FileHandler
 from flask import Flask, render_template
 
 chatlogs = "/home/znc/.znc/moddata/log/michcioperz/mibbit/#leebleforest"
 
 app = Flask(__name__)
-logger = SysLogHandler()
-logger.setLevel(logging.WARNING)
+logger = FileHandler("log.log")
 app.logger.addHandler(logger)
 
 
