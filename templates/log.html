@@ -2,7 +2,8 @@
 {% block content %}
 {% if p %}<h5>Previous day: <a href="{{ url_for("log", day=p) }}">{{ p.split(".log")[0] }}</a></h5>{% endif %}
 {% if n %}<h5>Next day: <a href="{{ url_for("log", day=n) }}">{{ n.split(".log")[0] }}</a></h5>{% endif %}
-<pre>
-{{ data|e }}
-</pre>
+<blockquote>
+{% for line in data.split("\n") %}
+<p>{{ line }}</p>
+{% endfor %}
 {% endblock content %}
