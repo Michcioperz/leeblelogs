@@ -28,6 +28,10 @@ def parse(line):
     elif x["message"].startswith("*** ") and " is now known as " in x["message"]:
         x["type"] = "nickchange"
         x["object"], x["target"] = x["message"][4:].split(" is now known as ", 1)
+    elif x["message"].startswith("*** ") and " changes topic to " in x["message"]:
+        x["type"] = "topicchange"
+        x["object"], x["target"] = x["message"][4:].split(" changes topic to '", 1)
+        x["target"] = x["target"][:-1]
     elif x["message"].startswith("<"):
         x["type"] = "message"
         x["object"] = x["message"][1:].split(">", 1)[0]

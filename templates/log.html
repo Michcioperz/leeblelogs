@@ -1,24 +1,29 @@
 {% extends "core.html" %}
 {% block content %}
-{% if p %}<h5>Previous day: <a href="{{ url_for("log", day=p) }}">{{ p.split(".log")[0] }}</a></h5>{% endif %}
+{% if p %}<h4>Previous day: <a href="{{ url_for("log", day=p) }}">{{ p.split(".log")[0] }}</a></h4>{% endif %}
 {% if n %}<h5>Next day: <a href="{{ url_for("log", day=n) }}">{{ n.split(".log")[0] }}</a></h5>{% endif %}
 <blockquote>
 {% for line in parsed_data %}
 <p style="display:block">
   {% if line.type == "message" %}
-    <strong>{{ line.object }}{{ ">"|e }}</strong> {{ line.content }}
+    <strong>{{ line.object }}{{ ":"|e }}</strong> {{ line.content }}
   {% elif line.type == "action" %}
     <strong>{{ line.object }} {{ line.action }}</strong>
   {% elif line.type == "nickchange" %}
-    <strong>{{ line.object }} {{ "->"|e }} {{ line.target }}</strong>
+    <h4>{{ line.object }} {{ "->"|e }} {{ line.target }}</h4>
   {% elif line.type == "join" %}
-    <strong>{{ "++"|e }} {{ line.object }}</strong>
+    <h4>{{ "++"|e }} {{ line.object }}</h4>
   {% elif line.type == "quit" %}
-    <strong>{{ "--"|e }} {{ line.object }}</strong>
+    <h4>{{ "--"|e }} {{ line.object }}</h4>
+  {% elif line.type == "topicchange" %}
+    <h5>topic = <em>{{ line.target }}</em></h5>
   {% else %}
     {{ line.message }}
   {% endif %}
   <time style="float:right">{{ line.time }}</time>
 </p>
 {% endfor %}
+</blockquote>
+{% if p %}<h5>Previous day: <a href="{{ url_for("log", day=p) }}">{{ p.split(".log")[0] }}</a></h5>{% endif %}
+{% if n %}<h4>Next day: <a href="{{ url_for("log", day=n) }}">{{ n.split(".log")[0] }}</a></h4>{% endif %}
 {% endblock content %}
