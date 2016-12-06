@@ -44,4 +44,4 @@ def log(day):
     with open(os.path.join(chatlogs, day)) as f:
         data = f.read()
     parsed_data = [parse(line) for line in data]
-    return render_template("log.html", data=data, forest=logs_registry()[::-1], p=logs[logs.index(day)-1] if logs[0] != day else None, n=logs[logs.index(day)+1] if logs[-1] != day else None)
+    return render_template("log.html", data=data, parsed_data=parsed_data, forest=logs_registry()[::-1], p=logs[logs.index(day)-1] if logs[0] != day else None, n=logs[logs.index(day)+1] if logs[-1] != day else None)
