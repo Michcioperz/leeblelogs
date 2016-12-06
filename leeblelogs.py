@@ -44,6 +44,6 @@ def log(day):
     if day not in logs:
         return render_template("not_found.html", forest=logs_registry()[::-1])
     with open(os.path.join(chatlogs, day)) as f:
-        data = f.read()
-    parsed_data = [parse(line) for line in data]
+        data = f.read().strip()
+    parsed_data = [parse(line) for line in data.split("\n")]
     return render_template("log.html", data=data, parsed_data=parsed_data, forest=logs_registry()[::-1], p=logs[logs.index(day)-1] if logs[0] != day else None, n=logs[logs.index(day)+1] if logs[-1] != day else None)
