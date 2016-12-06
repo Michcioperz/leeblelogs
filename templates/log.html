@@ -1,0 +1,8 @@
+{% extends "core.html" %}
+{% block content %}
+<h5>Previous day: <a href="{{ url_for("log", day=p) }}">{{ p.split(".log")[0] }}</a></h5>
+<h5>Next day: <a href="{{ url_for("log", day=n) }}">{{ n.split(".log")[0] }}</a></h5>
+<pre>
+{{ data|e }}
+</pre>
+{% endblock content %}
